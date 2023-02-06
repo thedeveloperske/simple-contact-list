@@ -1,14 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const ContactCard = () => {
+const ContactCard = (props) => {
+
+    console.log(props);
+
+    const [showAge, setShowAge] = useState(false);
+
   return (
     <div>
     <div className='contact-card'>
-      <img src='https://via.placeholder.com/150' alt='profile'/>
+      <img src={props.avatarUrl} alt='profile'/>
       <div className='user-details'>
-        <p>Name : Hanson Williams</p>
-        <p>Email : thedeveloperske@gmail.com</p>
-        <p>Age : 33</p>
+        <p>Name : {props.name}</p>
+        <p>Email : {props.email}</p>
+        <button onClick={() => setShowAge(!showAge)}>Show Age</button>        
+        {showAge && <p>Age : {props.age}</p> }
       </div>
     </div></div>
   )
